@@ -90,5 +90,95 @@ Java 8 introduced several powerful features and enhancements that significantly 
     - Improved memory management.
     - No more `OutOfMemoryError: PermGen space`.
 
----
+# Java 9 Features and Improvements
 
+1. **Modular System (Project Jigsaw)**:
+   - Introduced the module system to organize code into modules.
+   - Enables better encapsulation and improved maintainability.
+   - Example: Creating custom modules using `module-info.java`.
+
+2. **Private Methods in Interfaces**:
+   - Interfaces can now have private methods.
+   - Helps reduce code duplication and improves readability.
+   - Example:
+     ```java
+     interface MyInterface {
+         private void myPrivateMethod() {
+             // Implementation
+         }
+     }
+     ```
+
+3. **Collection Factory Methods**:
+   - Added convenient factory methods for creating immutable collections.
+   - Example:
+     ```java
+     List<String> myList = List.of("Java", "Kotlin");
+     ```
+
+4. **Stream Improvements**:
+   - New methods like `takeWhile`, `dropWhile`, and `ofNullable`.
+   - Enhances stream processing capabilities.
+   - Example:
+     ```java
+     myList.stream().takeWhile(s -> s.length() > 3).forEach(System.out::println);
+     ```
+
+# Java 10 Features and Improvements
+
+1. **Local Variable Type Inference (var)**:
+   - Allows type inference for local variables.
+   - Reduces boilerplate code.
+   - Example:
+     ```java
+     var myList = List.of("Java", "Kotlin");
+     ```
+
+2. **Optional.orElseThrow()**:
+   - Simplifies handling of `Optional` values.
+   - Throws an exception if the value is absent.
+   - Example:
+     ```java
+     String result = myList.stream().findFirst().orElseThrow();
+     ```
+
+3. **Unmodifiable Collections with `copyOf()`**:
+   - Creates unmodifiable views of collections.
+   - Example:
+     ```java
+     List<String> unmodifiableList = List.copyOf(myList);
+     ```
+
+# Java 11 Features and Improvements
+
+1. **New String Methods**:
+   - `isBlank`, `lines`, `strip`, `stripLeading`, `stripTrailing`, and `repeat`.
+   - Simplifies string manipulation.
+   - Example:
+     ```java
+     String multilineString = "Baeldung helps\n\ndevelopers\nexplore Java.";
+     List<String> lines = multilineString.lines()
+             .filter(line -> !line.isBlank())
+             .map(String::strip)
+             .collect(Collectors.toList());
+     ```
+
+2. **Reading/Writing Strings to and from Files**:
+   - New utility methods in the `Files` class.
+   - Example:
+     ```java
+     Path filePath = Files.writeString(Files.createTempFile(tempDir, "demo", ".txt"), "Sample text");
+     String fileContent = Files.readString(filePath);
+     ```
+
+3. **HTTP Client (JEP 321)**:
+   - Integrated HTTP client for making HTTP requests.
+   - Replaces the old `HttpURLConnection`.
+   - Example:
+     ```java
+     HttpClient client = HttpClient.newHttpClient();
+     HttpRequest request = HttpRequest.newBuilder()
+             .uri(new URI("https://baeldung.com"))
+             .build();
+     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+     ```
