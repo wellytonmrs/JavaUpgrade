@@ -1,6 +1,4 @@
-Certainly! Below is the formatted `README.md` content summarizing the key changes from Java 7 to Java 8:
-
----
+This project has the goal to document and exemplify the principal changes made to the java from 7 to 21.
 
 # Java 8 Features and Improvements
 
